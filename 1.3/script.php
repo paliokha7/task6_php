@@ -1,7 +1,5 @@
 <?php
-
-session_start(); 
-
+session_start();
 
 class Request
 {
@@ -12,16 +10,25 @@ class Request
     public static function post($key, $default = null) {
         return isset($_POST[$key]) ? htmlspecialchars($_POST[$key]) : $default;
     }
-}
 
+    public static function request($key, $default = null) {
+        return isset($_REQUEST[$key]) ? htmlspecialchars($_REQUEST[$key]) : $default;
+    }
+
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['name'] = Request::post('name');
     $_SESSION['age'] = Request::post('age');
-} elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_GET)) {
+} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_GET)) {
     $_SESSION['name'] = Request::get('name');
     $_SESSION['age'] = Request::get('age');
 }
+
+$id = Request::request('id');
+echo "ID: $id <br>";
+
+
 
 if (isset($_SESSION['name']) && isset($_SESSION['age'])) {
     setcookie('userName', $_SESSION['name'], time() + 3600); 
