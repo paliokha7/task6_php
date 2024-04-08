@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Демо PHP Запитів</title>
+  </head>
+  <body>
+    <form action="script.php" method="post">
+      Ім'я: <input type="text" name="name" required /><br />
+      Вік: <input type="number" name="age" required min="1" /><br />
+      <input type="submit" value="Надіслати" />
+    </form>
+    <a href="script.php?name=Roman&age=20"> GET запит </a>
+  </body>
+</html>
