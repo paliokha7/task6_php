@@ -1,8 +1,8 @@
 <?php
-// Стартуємо сесію
-session_start(); // Стартуємо сесію
 
-// Клас-обгортка
+session_start(); 
+
+
 class Request
 {
     public static function get($key, $default = null) {
@@ -14,7 +14,7 @@ class Request
     }
 }
 
-// Встановлення або оновлення cookies і сесії в залежності від типу запиту
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['name'] = Request::post('name');
     $_SESSION['age'] = Request::post('age');
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 if (isset($_SESSION['name']) && isset($_SESSION['age'])) {
-    setcookie('userName', $_SESSION['name'], time() + 3600); // Зберігаємо ім'я користувача в cookie
+    setcookie('userName', $_SESSION['name'], time() + 3600); 
     echo "Привіт, " . $_SESSION['name'] . "! Вам " . $_SESSION['age'] . " років.<br>";
     echo "Ім'я, збережене у cookie: " . ($_COOKIE['userName'] ?? 'Не встановлено') . "<br>";
 }
