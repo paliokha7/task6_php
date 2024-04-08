@@ -44,7 +44,7 @@ class SpecialBook extends Book {
 }
 
 class Reader {
-    public $name; // Public for easier access in this example
+    public $name;
     private $borrowedBooks = [];
 
     public function __construct($name) {
